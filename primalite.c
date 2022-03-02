@@ -34,9 +34,6 @@ int mod_pow(long a, long m, long n){
 		return (mod*mod*(a%n))%n;
 	}
 }
-int fonction_non_utile () {
-	return 1;
-}
 int main(){
 	clock_t temps_initial;
 	clock_t temps_final;
