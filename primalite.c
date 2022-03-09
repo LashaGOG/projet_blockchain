@@ -132,6 +132,9 @@ long random_prime_number(int low_size, int up_size, int k)
 	}
 	return p; 
 }
+int fonction_nonutile () {
+	return 1; 
+}
 // int main()
 // {
 // 	clock_t temps_initial;
