@@ -88,17 +88,17 @@ int is_prime_miller(long p, int k)
 	long b = 0;
 	long d = p - 1;
 	while (!(d & 1)) // tant que d n’est pas impair
-	{ 
-		d = d/2;
-		b=b+1;
+	{
+		d = d / 2;
+		b = b + 1;
 	}
 	// On genere k valeurs pour a, et on teste si c’est un temoin :
 	long a;
 	int i;
-	for(i = 0;i<k;i++) 
+	for (i = 0; i < k; i++)
 	{
-		a= rand_long(2, p-1);
-		if(witness(a,b,d,p))
+		a = rand_long(2, p - 1);
+		if (witness(a, b, d, p))
 		{
 			return 0;
 		}
@@ -108,33 +108,31 @@ int is_prime_miller(long p, int k)
 long random_prime_number(int low_size, int up_size, int k)
 {
 	/* retourne un nombre premier de taille comprise entre low_size et up_size */
-	long val_low = 1; 
-	int t; 
+	long val_low = 1;
+	int t;
 	// on obtient la valeure minimal
-	for (t = 0; t <low_size; t++) 
+	for (t = 0; t < low_size; t++)
 	{
-		val_low *= 2; 
+		val_low *= 2;
 	}
 	// on obtient la valeure maximale
 	long val_up = val_low;
 	while (t < up_size)
 	{
-		val_up *= 2; 
-		t ++;
+		val_up *= 2;
+		t++;
 	}
-	val_up-- ;
+	val_up--;
 
 	// on cherche le nb premier entre les valeurs obtenus
-	long p = rand_long (val_low,val_up); 
-	while (is_prime_miller(p,k) != 1) 
+	long p = rand_long(val_low, val_up);
+	while (is_prime_miller(p, k) != 1)
 	{
-		p = rand_long(val_low,val_up); 
+		p = rand_long(val_low, val_up);
 	}
-	return p; 
+	return p;
 }
-int fonction_nonutile () {
-	return 1; 
-}
+
 // int main()
 // {
 // 	clock_t temps_initial;
