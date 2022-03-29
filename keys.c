@@ -90,6 +90,7 @@ Signature *sign(char *mess, Key *sKey)
     int taille = strlen(mess);
     long *tab = encrypt(mess, sKey->val, sKey->n);
     Signature *s = init_signature(tab, taille);
+    free(tab); 
     return s;
 }
 
@@ -162,8 +163,9 @@ int verify(Protected *pr)
 
     char *messdec = decrypt(pr->signature->tab, strlen(pr->message), pr->pKey->val, pr->pKey->n);
     if (strcmp(messdec, pr->message) == 0)
+        free(messdec);
         return 1;
-
+    free(messdec);
     return 0;
 }
 
@@ -182,7 +184,8 @@ char *protected_to_str(Protected *pr)
     strcat(chaine, pr->message);
     strcat(chaine, " ");
     strcat(chaine, c2);
-
+    
+    free(c1);
     return chaine;
 }
 
@@ -190,7 +193,8 @@ Protected *str_to_protected (char *chaine)
 {
     /* permet de passer d'une chaine de caractères à un Protected */
     
-    int i=0;
+// On prend la 1ère partie de la chaine
+	int i=0;
 	while(chaine[i]!=' '){
 		i++;
 	}
@@ -200,30 +204,32 @@ Protected *str_to_protected (char *chaine)
 	}
 	c1[i]='\0';
 	
+	// On prend la 2ème partie de la chaine
 	int j=i+1;
 	while(chaine[j]!=' '){
 		j++;
 	}
-	char c2[j-i+1];
+	char c2[j-i];
 	for(int k=i+1;k<j;k++){
-		c2[k]=chaine[k];
+		c2[k-(i+1)]=chaine[k];
 	}
-	c2[j-i]='\0';
+	c2[j-i-1]='\0';
 	
+	// On prend la 3ème partie de la chaine
 	i=j+1;
 	while(chaine[i]!='\0'){
 		i++;
 	}
-	char c3[i-j+1];
+	char c3[i-j];
 	for(int k=j+1;k<i;k++){
-		c3[k]=chaine[k];
+		c3[k-(j+1)]=chaine[k];
 	}
-	c3[i-j]='\0';
-
-    Protected *pr = (Protected *) malloc (sizeof (Protected)); 
-    pr -> pKey = str_to_key (c1); 
-    pr -> message = strdup (c2); 
-    pr -> signature = str_to_signature (c3); 
+	c3[i-j-1]='\0';
+	Protected *pr = (Protected *)(malloc(sizeof(Protected)));
+	pr->pKey=str_to_key(c1);
+	pr->message=strdup(c2);
+	pr->signature=str_to_signature(c3);
+	return pr;
 
     return pr; 
 }

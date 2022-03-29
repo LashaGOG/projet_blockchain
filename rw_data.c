@@ -22,7 +22,7 @@ void push_lst_key (CellKey **lst_Key, Key* key) {
 
 CellKey* read_public_keys (char *file_Name) {
     /* retourne une liste chainée contenant toutes les clés publiques du fichier */
-    FILE *fichier = fopen(file_Name,"w"); 
+    FILE *fichier = fopen(file_Name,"r"); 
     if (fichier == NULL)  {
         printf("Erreur a l’ouverture de source.txt\n");
         return NULL; 
@@ -98,7 +98,7 @@ void push_lst_cellProtected (CellProtected **lst_protec, Protected* pr) {
 
 CellProtected* read_protected () {
     /* lit le fichier declarations.txt et crée une liste contenant toutes les déclarations signées du fichier */
-    FILE *fichier = fopen("declarations.txt","w"); 
+    FILE *fichier = fopen("declarations.txt","r"); 
     if (fichier == NULL)  {
         printf("Erreur a l’ouverture de source.txt\n");
         return NULL; 

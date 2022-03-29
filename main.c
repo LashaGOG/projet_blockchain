@@ -126,6 +126,9 @@ void test_rw_data () {
 }
 
 int main () {
-    test_rw_data(); 
+	//test_protocole_rsa(); 
+	// test_keys();
+	generate_random_data(100,3); 
+    //test_rw_data(); 
     return 1; 
 }

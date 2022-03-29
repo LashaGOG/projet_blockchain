@@ -19,22 +19,16 @@ long extended_gcd (long s, long t, long *u, long *v)
     return gcd ; 
 }
 
-void generate_keys_values (long p, long q, long* n, long* s, long* u) 
-{
+void generate_keys_values(long p, long q, long *n, long *s, long *u){
     /* generer la cle publique pKey = (s,n) et la cle secrete sKey = (u,n) a partir des nombres premiers p et q en suivant le protocole RSA */ 
-
-    *n = p * q; 
-    long t = (p-1) * (q-1);
-    
-    long v; 
+	*n = p * q; 
+	long t = (p-1) * (q-1);
+	long v;
     // generer l'entier s inferieur à t jusqu'à en trouver un tel que PGCD(s, t) = 1
-    
-    srand(time(NULL)); 
-    *s = rand() % t; 
-    while (extended_gcd(*s, t, u, &v) != 1) 
-    {
-        *s = rand() % t;
-    }
+	*s=rand_long(1,t);
+	while(extended_gcd(*s,t,u,&v)!=1){
+		*s=rand_long(1,t);
+	}
 }
 
 long *encrypt (char *chaine, long s, long n) 
