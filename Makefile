@@ -6,7 +6,7 @@ CFLAGS = -g -Wall
 #Liste des programme à créer
 PROGRAMS = main
 
-	#Premiere regle: liste des programme à compiler
+#Premiere regle: liste des programme à compiler
 #Règle sans action, seulement avec des dépendances
 all : $(PROGRAMS)
 
