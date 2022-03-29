@@ -120,6 +120,8 @@ void test_keys () {
 }
 
 void test_rw_data () {
+    
+
     printf ("Test de la fonction : rw_data réussi. \n");
 }
 
