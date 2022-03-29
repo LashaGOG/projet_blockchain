@@ -13,17 +13,9 @@ all : $(PROGRAMS)
 #Règle pour compiler le main
 main : main.o primalite.o protocole_rsa.o keys.o generate_data.o rw_data.o 
 	$(CC) $(CFLAGS) -o $@ $^ 
-main.o : main.c
-	$(CC) $(CFLAGS) -c $<
-primalite.o : primalite.c primalite.h
-	$(CC) $(CFLAGS) -c $<
-protocole_rsa.o : protocole_rsa.c protocole_rsa.h
-	$(CC) $(CFLAGS) -c $<
-keys.o : keys.c keys.h
-	$(CC) $(CFLAGS) -c $< 
-generate_data.o : generate_data.c generate_data.h
-	$(CC) $(CFLAGS) -c $<
-rw_data.o : rw_data.c rw_data.h
+
+#Règle générique de compilation des .o à partir des .c
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
 #Effacer les .o et les executables
