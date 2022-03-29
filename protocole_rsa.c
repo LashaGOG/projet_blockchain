@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include "primalite.c"
+#include "protocole_rsa.h"
+
 long extended_gcd (long s, long t, long *u, long *v) 
 {
     if (s == 0) 

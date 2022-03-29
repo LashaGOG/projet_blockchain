@@ -1,12 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "protocole_rsa.c"
+#include "keys.h"
 
-typedef struct _key
-{
-    long val; // val represent u ou v
-    long n;   // n
-} Key;
+
 
 void init_key(Key *key, long val, long n)
 {
@@ -71,13 +67,6 @@ Key *str_to_key(char *str)
 
     return clef;
 }
-
-typedef struct _signature
-{
-    // la signature sous la forme de la tableau tab de long et sa taille
-    long *tab;
-    int taille;
-} Signature;
 
 Signature *init_signature(long *content, int size)
 {
@@ -154,13 +143,6 @@ Signature *str_to_signature(char *str)
     content = realloc(content, num * sizeof(long));
     return init_signature(content, num);
 }
-
-typedef struct _protected
-{
-    Key *pKey;
-    Signature *signature;
-    char *message;
-} Protected;
 
 Protected *init_protected(Key *pKey, char *mess, Signature *sgn)
 {

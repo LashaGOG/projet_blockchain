@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "keys.c"
+#include "generate_data.h"
 
 void generate_random_data(int nv, int nc) 
 {
@@ -14,11 +14,11 @@ void generate_random_data(int nv, int nc)
         init_pair_keys ( &tab_pKeys [i] , &tab_sKeys [i] ,3 ,7) ;
     }
     /* pour voir le pb; dans le tab, tous les clefs sotn les memes, à part le premier*/
-    // for (int i = 0; i< nv; i++) 
-    // {
-    //     printf ("%s\t",key_to_str(&tab_pKeys[i])); 
-    //     printf ("%s\n",key_to_str(&tab_sKeys[i])); 
-    // }
+    for (int i = 0; i< nv; i++) 
+    {
+        printf ("%s\t",key_to_str(&tab_pKeys[i])); 
+        printf ("%s\n",key_to_str(&tab_sKeys[i])); 
+    }
     
     /* crée un fichier keys.txt contenant tous ces couples de clés (un couple par ligne) */
 
@@ -57,7 +57,7 @@ void generate_random_data(int nv, int nc)
 
 }
 
-int main () {
-    generate_random_data(100,3); 
-    return 1; 
-}
+// int main () {
+//     generate_random_data(100,3); 
+//     return 1; 
+// }

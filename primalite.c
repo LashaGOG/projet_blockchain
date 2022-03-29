@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "primalite.h"
 
 int is_prime_naive(long p)
 {
