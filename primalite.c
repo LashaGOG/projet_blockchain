@@ -131,30 +131,3 @@ long random_prime_number(int low_size, int up_size, int k)
 	}
 	return p;
 }
-
-// int main()
-// {
-// 	clock_t temps_initial;
-// 	clock_t temps_final;
-// 	double temps1, temps2;
-// 	long a = 5821352136521;
-// 	long m;
-// 	long n = 6525251414;
-// 	char nom[10] = "temps.txt";
-// 	FILE *fichier = fopen(nom, "w");
-// 	for (m = 10000000; m <= 300000000; m += 10000000)
-// 	{
-// 		temps_initial = clock();
-// 		mod_pow_naive(a, m, n);
-// 		temps_final = clock();
-// 		temps1 = (double)(temps_final - temps_initial) / CLOCKS_PER_SEC;
-
-// 		temps_initial = clock();
-// 		mod_pow(a, m, n);
-// 		temps_final = clock();
-// 		temps2 = (double)(temps_final - temps_initial) / CLOCKS_PER_SEC;
-
-// 		fprintf(fichier, "%ld %lf %lf\n", m, temps1, temps2);
-// 	}
-// 	fclose(fichier);
-//  }
