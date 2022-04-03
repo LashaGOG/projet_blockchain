@@ -11,7 +11,7 @@ PROGRAMS = main
 all : $(PROGRAMS)
 
 #Règle pour compiler le main
-main : main.o primalite.o protocole_rsa.o keys.o generate_data.o rw_data.o 
+main : main.o primalite.o protocole_rsa.o keys.o generate_data.o rw_data.o winner.o
 	$(CC) $(CFLAGS) -o $@ $^ 
 
 #Règle générique de compilation des .o à partir des .c
